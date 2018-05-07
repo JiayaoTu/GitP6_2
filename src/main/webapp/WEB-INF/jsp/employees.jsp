@@ -13,8 +13,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>员工列表</title>
 </head>
+
+<style type="text/css">
+table,th,td
+{
+border-collapse:collapse;
+border:2px solid black;
+}
+</style>
 <body>
-<table style="width:60%;border:1px black solid">
+<table style="width:60%;border:1px black ">
     <thead>
     <tr bgcolor="black"style="color: #fff;">
         <th>编号</th>>
@@ -28,7 +36,10 @@
         EmployeeRepository employeeRepository = new TestEmployeeRepository();
         List<Employee> employees = employeeRepository.getAllEmployees();
         for (int i = 0; i < employees.size(); i++) {
+        if(i%2==0)
+        {
     %>
+
     <tr align="center" bgcolor="cococo">
         <td><%out.print(employees.get(i).getId());%></td>
         <td><%out.print(employees.get(i).getName());%></td>
@@ -36,6 +47,18 @@
         <td><%out.print(employees.get(i).getGender());%></td>
     </tr>
     <%
+    }else{
+
+    %>
+     <tr align="center" >
+            <td><%out.print(employees.get(i).getId());%></td>
+            <td><%out.print(employees.get(i).getName());%></td>
+            <td><%out.print(employees.get(i).getAge());%></td>
+            <td><%out.print(employees.get(i).getGender());%></td>
+        </tr>
+
+    <%
+    }
         }
     %>
     </tbody>
